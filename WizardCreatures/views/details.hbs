@@ -1,0 +1,63 @@
+<section id="details-page">
+  <div class="main_card">
+    <div class="card_left">
+      <div class="card_datails">
+
+        <h1>Name: {{creature.name}}</h1>
+        <h3>Created by an author: {{creature.author.firstName}} {{creature.author.lastName}}</h3>
+        <div class="card_character">
+          <p class="card-species">Species: {{creature.species}}</p>
+          <p class="card-skin">Skin colour: {{creature.skinColor}}</p>
+          <p class="card-eye">Eye Colour: {{creature.eyeColor}}</p>
+        </div>
+
+        <p class="disc">
+          Description: {{creature.description}}
+        </p>
+
+        {{#if hasUser}}
+        <div class="social-btn">
+          {{#if creature.isAuthor}}
+          <a href="/edit/{{creature._id}}" class="edit-btn">Edit</a>
+          <a href="/delete/{{creature._id}}" class="del-btn">Delete</a>
+          {{else}}
+          {{#unless creature.hasVoted}}
+          <a href="/vote/{{creature._id}}" class="vote-up">Vote</a>
+          {{/unless}}
+          {{#if creature.hasVoted}}
+          <p class="thanks-for-vote">Thanks For Voting</p>
+          {{/if}}
+          {{/if}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="card_right">
+      <img src="{{creature.image}}" alt="{{creature.name}}" />
+    </div>
+  </div>
+</section>
+
+<section id="votes">
+  <div class="vote-info">
+    <div class="card_left">
+      <div class="card_datails">
+        <h1>Votes</h1>
+        <div class="card_vote">
+          <p class="PV">Total rating of votes: {{creature.votesList.length}}</p>
+        </div>
+
+        <p class="disc">
+          {{#if creature.votesList.length}}
+          People who voted for the post -
+          {{#each votersEmails}}
+          {{this}}{{#unless @last}}, {{/unless}}
+          {{/each}}
+          {{else}}
+          People who voted for the post - No one has voted yet.
+          {{/if}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

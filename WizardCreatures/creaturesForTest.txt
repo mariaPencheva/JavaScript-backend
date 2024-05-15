@@ -1,0 +1,24 @@
+Name: Triushi
+Species: Animal
+Skin Colour: Blue
+Eye Colour: Light Green
+Creature Image: https://tse3.mm.bing.net/th?id=OIG2.5yE.keHNCsiWXuAla1Zv&pid=ImgGn
+Description: An animal with blue skin, creature between avatar and bird! 
+
+======
+
+Name: Hedwig
+Species: Snowy Owl
+Skin Colour: Pure white
+Eye Colour: Majestic yellow
+Creature Image: https://tse4.mm.bing.net/th?id=OIG2.j7gZwXvDfvbcur3N3HI2&pid=ImgGn
+Description: Hedwig is a loyal and intelligent snowy owl who serves as Harry Potter's faithful companion. She delivers letters and messages throughout the wizarding world. 
+
+======
+
+Name: Scabbers
+Species: Rat (Animagus form)
+Skin Colour: Gray-brown fur
+Eye Colour: Dark beady eyes
+Creature Image: https://tse1.mm.bing.net/th?id=OIG3.mvIYNnwNKnqGst0wcR8d&pid=ImgGn
+Description: Scabbers, also known as Wormtail, is Peter Pettigrew—an Animagus who can transform into a rat. His role in the Harry Potter series is significant, especially as a servant of Lord Voldemort. 
