@@ -1,0 +1,33 @@
+<section class="create-form-container">
+<div>
+    {{#if errors}}
+        <div class="errorContainer">
+            {{#each errors}}
+                <p>{{ this }}</p>
+            {{/each}}
+        </div>
+    {{/if}}
+
+    <form method="post">
+        <h3>Create Book Review</h3>
+        <label>Title</label>
+        <input type="text" name="title" class="box" {{#if data.title}} value="{{ data.title }}" {{/if}}>
+
+        <label>Author</label>
+        <input type="text" name="author" class="box" {{#if data.author}} value="{{ data.author }}" {{/if}}>
+
+        <label>Genre</label>
+        <input type="text" name="genre" class="box" {{#if data.genre}} value="{{ data.genre }}" {{/if}}>
+
+        <label>Stars</label>
+        <input type="number" name="stars" class="box" {{#if data.stars}} value="{{ data.stars }}" {{/if}}>
+
+        <label>Image</label>
+        <input type="text" name="image" class="box" {{#if data.image}} value="{{ data.image }}" {{/if}}>
+
+        <label>Review</label>
+        <textarea class="box" name="bookReview">{{#if data.bookReview}} {{ data.bookReview }} {{/if}}</textarea>
+
+        <input type="submit" value="Create" class="btn">
+    </form>
+</section>

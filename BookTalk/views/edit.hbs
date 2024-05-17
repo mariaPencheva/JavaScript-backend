@@ -1,0 +1,24 @@
+<section class="edit-form-container">
+
+    <form method="post">
+        <h3>Edit Book Review</h3>
+        <label>Title</label>
+        <input type="text" name="title" class="box" {{#if book.title}} value="{{book.title}}" {{/if}}>
+
+        <label>Author</label>
+        <input type="text" name="author" class="box" {{#if book.author}} value="{{book.author}}" {{/if}}>
+
+        <label>Genre</label>
+        <input type="text" name="genre" class="box" {{#if book.genre}} value="{{book.genre}}" {{/if}}>
+
+        <label>Stars</label>
+        <input type="number" name="stars" class="box" {{#if book.stars}} value="{{book.stars}}" {{/if}}>
+
+        <label>Image</label>
+        <input type="text" name="image" class="box" {{#if book.image}} value="{{book.image}}" {{/if}}>
+
+        <label>Review</label>
+        <textarea class="box" name="bookReview"> {{#if book.bookReview}} {{book.bookReview}} {{/if}}</textarea>
+        <input type="submit" value="Edit" class="btn">
+    </form>
+</section>

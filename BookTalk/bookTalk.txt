@@ -1,0 +1,147 @@
+JS Back-End Exam - Book Talk
+1. Exam Rules:
+1. You have 4 hours 
+2. When you are ready, delete the node_modules folder, make sure all dependencies are listed in the package.json file and submit your archiving project.
+3. You are provided with HTML & CSS resources 
+4. You may add attributes (such as class and dataset), but it is forbidden to change existing attributes (such as class and id)
+5. You may change "href" attributes on links and add/change the method and action attributes of HTML Forms.
+6. Use Express.js as a back-end framework
+7. Use MongoDB as a database with mongoose
+8. You can use whatever view engine you like (express-handlebars, EJS, Pug, etc.)
+9. Use bcrypt for hashing the password
+10. The application must start from the file "index.js" on port 3000
+11. It is forbidden to use React, Vue, Angular, etc.
+12. Only the last submission will be evaluated!
+2. Application Overview
+Get acquainted with the provided HTML and CSS and create an application for the book review. 
+The visitors can view the Home page and Catalog page with available reviews. They can also register with an email, username, and password, allowing them to create their review for the book and add it to the wishing list (if the current user is not the owner of the book review). Authors can edit or delete posts at any time.
+3. Functional Requirements
+Guest (not logged in)
+Guest navigation example: 
+
+The application should provide Guest (not logged in) users with the functionality to Login, Register, and view the Home page, Catalog page, and Details page.
+Users (logged in)
+User navigation example:
+
+The application should provide Users (logged in) with the functionality to:
+* View the Home page and all other pages with logged-in navigation
+* View Catalog Page
+* Create � new book review [Create Review]
+* Access book details page [Details]
+* Wish to read (if the current user is not the owner of the review)
+* Delete or Edit the review depending on the user's authentication (only for the owner of the current book review)
+4. Database Models 
+The Database of the Book Talk application needs to support two entities:
+User
+* Username - string (required),
+* Email - string (required),
+* Password - string (required)
+ Book
+* Title - String (required),
+* Author: String (required),
+* Image: String (required),
+* Book Review: String (required),
+* Genre: String (required),
+* Stars: Number (required) between 1 and 5,
+* WishingList: a collection of Users (a reference to the User model)
+* Owner - object Id (a reference to the User model)
+Note:  When a user adds a book to their Wishlist, their id is added to that collection (WishingList)
+Implement the entities with the correct data types.
+
+5. Application Pages (80 pts)
+Home Page (For logged in users and logged-out users) 
+Visualize static home page. 
+
+Register Page (Logged Out User)
+Register a user inside the Database with a username, email, and password. Password inside the Database must be hashed (use bcrypt), and both passwords must match! After successful registration, you should redirect the logged-in user to the Home page.
+
+Login Page (Logged Out User) - (5 Pts)
+Logging an already registered user with the correct email and password. After successful login, you should redirect to the Home page.
+
+Logout (logged in user)
+The logout action is available to logged-in users. Upon success, clear any session information and redirect the user to the Home page.
+Book Catalog (For logged in users and logged out users)
+List of all books reviewed. Each offer must display information about the book image, the name, and a button for details about the specific book. As in the picture below:
+
+[Details] button should be a link to the details page for the current book.
+If there are NO book reviews in the Database, display "There�are�no�book�reviews�found yet�"
+
+Details Page - (for logged in users and logged out users)
+All users should be able to see details. Clicking the Details button on the book card should display the details page. If the currently registered user is the creator of the book review, the Edit and Delete buttons should be displayed. Otherwise, they should not be available.
+Information about the book:
+* Title
+* Author
+* Genre
+* Stars
+* Image
+* Review
+* Buttons (Depending on the status of the currently logged in user)
+
+Details Page (logged out users)
+If there are no logged-in users, no buttons should be displayed.
+
+Details Page (logged in user and creator of the current review)
+If the currently logged-in user is the owner (the user who created the book review), he should see the [Delete] and [Edit] buttons.
+
+Details Page (logged in user without wishing book)
+If the currently logged-in user is not the owner (a user who is not the creator of this book review) and has not wished to read that book, he should see a wish to read button.
+
+Details Page (logged in user already wished book)
+If the currently logged in user is not the owner and has already wished to read, he should see [You already added the book to your wish list].
+
+Wish Book (logged in user who is not the current book owner)
+Any registered user who is not the current owner of the book review must be able to Wish to read the book (if any). 
+If he manages to wish the book successfully, his userId must be added to the collection of Wishing List and redirect the user to the Details page for the current book review.
+If a user has once wished for a current book, he should see "You already added the book to your wish list ".
+Create Review (Logged in User) 
+The Create Review page is available to logged-in users. It contains a form for adding a new book review. Upon success, redirect the user to the Catalog page.
+
+Delete Book Review (logged in user and owner of the current book review) 
+Each owner of the book review must be able to click on the [Delete] button and delete the current book from the Database, and the user must be redirected to the Catalog page.
+Edit Book Review (logged in user and owner of the current book review) 
+Each owner can edit their book review. Clicking the [Edit] button for a specific review on the details page should display the Edit page, all fields being populated with book data. It contains a form with input fields for all relevant properties. If successful, redirect the user to the current book details page.
+
+6. Security Requirements (Routes Guards) - (10 Pts)
+The Security Requirements are mainly access requirements. Configurations about which users can access specific functionalities and pages.
+* Guest (not logged in) users can access the Home page.
+* Guest (not logged in) users can access the Login page and functionality.
+* Guest (not logged in) users can access the Register page and functionality.
+* Guest (not logged in) and Users (logged in) can access the Catalog page (Listed all book reviews).
+* Guest (not logged in) can access the Details page without functionality.
+* Users (logged in) can access the Home page.
+* Users (logged in) can access the Details page and functionality.
+o Users (not book review owners) can wish book.
+o Users (book review owners) can Edit and Delete the current book review
+* Users (logged in) can access Create Review page and functionality.
+* Users (logged in) can access Logout functionality.
+Use the following view for invalid paths:
+
+7. Validation and Error Handling (10 Pts)
+The application should notify the users about the result of their actions.
+In case of error, you should display div with class "errorContainer"
+You can choose to display the first error or all of them. You have complete freedom to choose the content of the error message you will display.
+Login / Register
+You should make the following validations:
+* The username should be at least 4 characters long
+* The email should be at least 10 characters long
+* The password should be at least 3 characters long
+* The repeat password should be equal to the password
+ 
+Book
+You should make the following validations while creating or editing a book review:
+* The Title should be at least 2 characters
+* The Author should be at least 5 characters
+* The Genre should be at least 3 characters
+* The Stars should be a positive number between 1 and 5
+* The Image should start with http:// or https://.
+* The Review should be a minimum of 10 characters long.
+
+* Bonus: Profile (10 Pts)
+Each logged-in user should be able to view their profile information by clicking [Profile]. Email and wishing book titles (which the current user has wished).
+
+Otherwise, if there are no wished books yet, the message "There are no book reviews found yet�" should be visualized. 
+
+8. Submitting Your Solution
+Place in a ZIP file in your project folder. Exclude the node_modules folder. Upload the archive to Judge.
+
+GOOD LUCK!
