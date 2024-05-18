@@ -1,0 +1,159 @@
+JS Back-End Regular Exam - Home Cooking Recipes
+1. Exam Rules:
+1. You have 6 hours.
+2. When you are ready, delete the node_modules folder, make sure all dependencies are listed in the package.json file and submit your archiving project.
+3. You must use the provided HTML & CSS resources.
+4. You may add attributes (such as class and dataset), but it is forbidden to change existing attributes (such as class and id).
+5. You may change "href" attributes on links and add/change the method and action attributes of HTML Forms.
+6. Use Express.js as a back-end framework.
+7. Use MongoDB as a database with mongoose.
+8. You can use whatever view engine you like (express-handlebars, EJS, Pug, etc.).
+9. Use bcrypt for hashing the password.
+10. It is forbidden to use React, Vue, Angular, etc.
+11. All applications will be examined as follows:
+* The needed dependencies are installed with the command "npm install".
+* The application is started with the command "npm run start".
+12. The examiners are NOT allowed to change anything in your code and will NOT use any instruments outside of the course scope.
+13. You decide how to name your links.
+IMPORTANT:
+1. THE APPLICATION MUST START FROM THE FILE "INDEX.JS" ON PORT 3000!
+2. ONLY THE LAST SUBMISSION WILL BE EVALUATED!
+2. Application Overview
+Get acquainted with the provided HTML and CSS and create an application for the home cooking recipes. 
+The visitors can view the Home page, Recipes page with available recipes. They can also register with a name, an email and password, allowing them to create their posts and to recommend recipes they are interested in (if the current user is not the author of the post). Authors can edit or delete their post at any time.
+3. Functional Requirements
+Guest (Not logged in)
+Guest navigation example: 
+ 
+The application should provide Guest (not logged in) users with the functionality to Login, Register, and view the Home page, Recipes page, and Details page.
+Users (Logged in)
+User navigation example:
+
+The application should provide Users (logged in) with the functionality to:
+* View the Home page and all other pages with logged-in navigation
+* View Recipes page
+* Create: new Recipe Post [Add Recipe]
+* Access recipes details page [Details]
+* Recommend recipes (if the current user is not the owner of the post)
+* Delete or Edit the recipe post depending on the user's authentication (only for the owner of the current post)
+4. Database Models 
+The Database of the HomeCookingRecipes application needs to support two entities:
+User
+* username - string (required),
+* email - string (required),
+* password - string (required)
+Recipes
+* title - string (required),
+* ingredients- string (required),
+* instructions- string (required),
+* description - string (required),
+* image: string (required),
+* recommendList - a collection of Users (a reference to the User model)
+* owner - object ID (a reference to the User model)
+Note:  When a user recommend the recipes, their id is added to the recommendList collection. You can add more entities, if you need.
+Implement the entities with the correct data types.
+
+5. Application Pages
+Home Page (For logged in users and logged-out users) 
+Visualize the last 3 added post. Each recipe must show information about the recipes name, description, image as well as a page with details about the recipe.
+
+If there are NO post in the database yet, display "There are no recipes found yet!"
+
+Explore Recipes button must redirect to the Catalog Page.
+Register Page (Logged Out User)
+Register a user inside the database with a name, an email and password. The password inside the database must be hashed (use bcrypt), and both passwords must match! After successful registration, the user should be logged and redirected to the Home page. If the user tries to submit invalid data, an error message should be displayed and the already entered data should be kept in the input fields (except for the passwords). The Login here button should be redirected to the Login Page.
+A user who is already logged in should NOT be able to reach this page by typing its URL (e.g. "http://localhost:3000/register") in the browser address bar. 
+
+Login Page (Logged Out User)
+Logging an already registered user with the correct email and password. After successful login, you should redirect the user to the Home page. If the user tries to submit invalid data, an error message should be displayed and the already entered data should be kept in the input fields (except for the passwords). The Register here button should be redirected to the Register Page.
+A user who is already logged in should NOT be able to reach this page by typing its URL (e.g. "http://localhost:3000/login") in the browser address bar. 
+
+Logout (Logged in user)
+The logout action is available to logged-in users. Upon success, clear any session information and redirect the user to the Home page.
+A user who is NOT logged in should NOT be able to reach this functionality by typing its URL (e.g. "http://localhost:3000/logout") in the browser address bar.
+
+Create Recipes (Logged in User) 
+The Create Recipes page is available to logged-in users. It contains a form for adding new recipe post. Upon success, redirect the user to the Recipes page. If the user tries to submit invalid data, an error message should be displayed and the already entered data should be kept in the input fields.
+A guest user (who is not logged in) should NOT be able to reach this page by typing its URL (e.g. "http://localhost:3000/recipes/create/1234") in the browser address bar. 
+
+Recipes (For logged in users and logged out users)
+A list of all recipes.. Each recipe must be displayed with the name, the description, the ingredients, the instructions and the image, and a button for details about the specific post. As in the picture below:
+
+The [Details] button should be a link to the details page for the current recipe post.
+If there are NO post in the database yet, display "There are no recipes found yet!"
+
+Details Page (For logged in users and logged out users)
+All users should be able to see the details about the recipes. Clicking the Details button on the post card should display the details page. If the currently registered user is the creator of the post, the Edit and Delete buttons should be displayed. Otherwise, they should not be available.
+Information about the recipes:
+* Title
+* Description
+* Ingredients
+* Instructions
+* Recommend
+* Buttons (Depending on the status of the currently logged in user)
+
+Details Page (Logged out users)
+If the user has not logged in, no buttons should be displayed.
+
+Details Page (Logged in user and creator of the current post)
+If the currently logged-in user is the owner (the user who created the recipe post), he should see the [Delete] and [Edit] buttons.
+
+Details Page (Logged in user who has not recommend recipe)
+If the currently logged-in user is not the owner (a user who is not the creator of this recipe post) and he has not recommend the post, he should see a Recommend button. Each user who is NOT the owner of the current post must be able to click on the [Recommend] button and recommend current recipe. If successful, redirect the user to the current recipe post details page.
+A user who is owner of the recipe should NOT be able to reach this functionality by typing its URL (e.g. "http://localhost:3000/recipes/recommend/1234") in the browser address bar.
+
+Details Page (Logged in user already recommend recipe post)
+If the currently logged in user is not the owner and has already recommend the recipe post, he should see [You've already recommended this recipe!] and People Who Recommend must increase by one.  
+Delete Recipe Post (Logged in user and owner of the current post) 
+Each owner of the recipe post must be able to click on the [Delete] button and delete the current recipe from the database. After this, the user must be redirected to the Recipes page.
+A user who is not the owner of the recipe should NOT be able to reach this functionality by typing its URL (e.g. "http://localhost:3000/recipes/delete/1234") in the browser address bar. 
+Edit Recipe Post (Logged in user and owner of the current post) 
+Each owner can edit their post. Clicking the [Edit] button for a specific post on the details page should display the Edit page, all fields being populated with recipe data. It contains a form with input fields for all relevant properties. If successful, redirect the user to the current recipe post details page. If the user tries to submit invalid data, an error message should be displayed and the already entered data should be kept in the input fields.
+A user who is not the owner of the recipes should NOT be able to reach this page by typing its URL (e.g. "http://localhost:3000/recipes/edit/1234") in the browser address bar. 
+
+6. Security Requirements (Routes Guards)
+The Security Requirements are mainly access requirements. Configurations about which users can access specific functionalities and pages.
+* Guest (not logged in) users can access the Home page.
+* Guest (not logged in) users can access the Login page and functionality.
+* Guest (not logged in) users can access the Register page and functionality.
+* Guest (not logged in) and Users (logged in) can access the Recipes (Listed all recipes posts).
+* Guest (not logged in) can access the Details page without functionality.
+* Guest (not logged in) can access the Search page and functionality.
+* Users (logged in) can access the Home page.
+* Users (logged in) can access the Details page and functionality.
+o Users (not post owners) can recommend other's post.
+o Users (post owners) can Edit and Delete the current post
+* Users (logged in) can access the Search page and functionality.
+* Users (logged in) can access the Add Recipe page and functionality.
+* Users (logged in) can access the Logout functionality.
+Use the following view for invalid paths:
+
+The Go Back Home button should be redirected to the Home Page.
+7. Validation and Error Handling
+The application should notify the users about the result of their actions.
+In case of error, you should display div with class "error-container"
+You can choose to display the first error or all of them. You have complete freedom to choose the content of the error message you will display, as long as it is clear what exactly the error is.
+
+Login / Register
+You should make the following validations:
+* The name should be between 2 and 20 characters long
+* The email should be at least 10 characters long
+* The password should be at least 4 characters long
+* The repeat password should be equal to the password
+
+Recipes
+You should make the following validations while creating or editing a recipes post:
+* The Title should be at least 2 characters
+* The Description should be between 10 and 100 characters long
+* The Ingredients should be between 10 and 200 characters long
+* The Instuctions should be at least 10 characters long
+* The Image should start with http:// or https://
+
+8. * Bonus - Search
+Search for recipes. Filter all matches by title, which includes a search string (case insensitive). When the search is first open, all recipes should be displayed. 
+
+After clicking on the [Search] button If there are any matching matches from the search, show each of them.
+
+If there are no search matches, display:
+
+GOOD LUCK!
