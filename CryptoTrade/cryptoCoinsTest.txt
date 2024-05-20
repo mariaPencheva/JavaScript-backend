@@ -1,0 +1,26 @@
+Name: EtherLite
+
+Image:
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx-tgzsCv6NweucIbPx6AfnRmgPSlOo6H66PagOmyt-dj_kexEwX_Y3iA4wNbhrJptwJQ&usqp=CAU
+
+Price: 1.5
+
+Description:
+EtherLite is a highly scalable and eco-friendly blockchain platform optimized for DeFi and NFTs. Built with a focus on security and low transaction fees.
+
+Payment method: Crypto Wallet
+
+
+======
+
+Name: SolarCoin
+
+Image:
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9MSFdfCsLULKX1pKquHs6sUQIKYnH8rT8EQ&s
+
+Price: 250.73
+
+Description:
+SolarCoin rewards solar energy producers with digital assets. Every MWh of electricity generated from solar energy earns one SolarCoin.
+
+Payment method: Credit Card
