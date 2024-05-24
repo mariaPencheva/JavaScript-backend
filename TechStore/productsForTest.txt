@@ -1,0 +1,29 @@
+Brand: Dell,
+Model: XPS 13,
+HardDisk: 512 GB SSD,
+ScreenSize: 13.4 inches,
+RAM: 16 GB,
+OperatingSystem: Windows 11,
+CPU: Intel Core i7-1365U,
+GPU: Intel Iris Xe,
+Price: 1499.99,
+Color: Silver,
+Weight: 1.2 kg
+Image: https://cdn.mos.cms.futurecdn.net/PZtqJj8yTeTYnw3WMjdomF.jpg
+
+
+======
+
+
+Brand: Apple,
+Model: MacBook Pro 14,
+HardDisk: 1 TB SSD,
+ScreenSize: 14.2 inches,
+RAM: 32 GB,
+OperatingSystem: macOS Ventura,
+CPU: Apple M2 Pro,
+GPU: Apple M2 Pro GPU,
+Price: 2399.88,
+Color: Space Gray,
+Weight: 1.6 kg
+Image: https://media.cnn.com/api/v1/images/stellar/prod/211025072623-macbook-pro-14-display-5.jpg?q=w_4032,h_2268,x_0,y_0,c_fill

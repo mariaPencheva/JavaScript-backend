@@ -1,0 +1,31 @@
+<section class="catalog-hero">
+    <div class="container">
+        <h2>Product Catalog</h2>
+        <p>Explore our extensive range of laptops, desktops, and accessories.</p>
+    </div>
+</section>
+
+<section class="catalog">
+    <div class="container">
+        <div class="product-grid">
+
+            {{#if products.length}}
+            {{#each products}}
+            
+            <div class="product-item">
+                <img
+                    src="{{image}}">
+                <h3>{{brand}} {{productModel}}</h3>
+                <h2>${{price}}</h2>
+                <p>CPU: {{cpu}}</p>
+                <p>GPU: {{gpu}}</p>
+                <p>Screen: {{screenSize}}</p>
+                <a href="/catalog/{{_id}}" class="btn">View Details</a>
+            </div>
+            {{/each}}
+            {{else}}
+                <p class="no-post">There haven't been any devices posted yet.</p>
+            {{/if}}
+        </div>
+    </div>
+</section>

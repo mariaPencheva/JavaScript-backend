@@ -1,0 +1,62 @@
+    <section class="create-hero">
+        <div class="container">
+            <h2>Create New Product</h2>
+            <p>Fill in the details below to add a new product to the catalog.</p>
+        </div>
+    </section>
+
+    <section class="create-form">
+        <div class="container">
+            <form method="post">
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" {{#if product.brand}} value="{{ product.brand }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model:</label>
+                    <input type="text" id="model" name="productModel" {{#if product.productModel}} value="{{ product.productModel }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="hard-disk">Hard Disk:</label>
+                    <input type="text" id="hard-disk" name="hardDisk" {{#if product.hardDisk}} value="{{ product.hardDisk }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="screen-size">Screen Size:</label>
+                    <input type="text" id="screen-size" name="screenSize" {{#if product.screenSize}} value="{{ product.screenSize }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="ram">RAM:</label>
+                    <input type="text" id="ram" name="ram" {{#if product.ram}} value="{{ product.ram }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="operating-system">Operating System:</label>
+                    <input type="text" id="operating-system" name="operatingSystem" {{#if product.operatingSystem}} value="{{ product.operatingSystem }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="cpu">CPU:</label>
+                    <input type="text" id="cpu" name="cpu" {{#if product.cpu}} value="{{ product.cpu }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="gpu">GPU:</label>
+                    <input type="text" id="gpu" name="gpu" {{#if product.gpu}} value="{{ product.gpu }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" {{#if product.price}} value="{{ product.price }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="gpu">Color:</label>
+                    <input type="text" id="color" name="color" {{#if product.color}} value="{{ product.color }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="gpu">Weight:</label>
+                    <input type="text" id="weight" name="weight" {{#if product.weight}} value="{{ product.weight }}" {{/if}}>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="text" id="image" name="image" {{#if product.image}} value="{{ product.image }}" {{/if}}>
+                </div>
+                <button type="submit" class="btn">Create Product</button>
+            </form>
+        </div>
+    </section>
